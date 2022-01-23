@@ -1,9 +1,17 @@
 let form = document.querySelector('#form');
-let userInput = document.querySelector('#seachField');
+let input = document.querySelector('#seachField');
 let searchButton = document.querySelector('button');
 
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', async function (e) {
   e.preventDefault();
-  console.dir(form)
-})
+  const searchTerm = input.value;
+  const res = await axios.get(`https://api.tvmaze.com/singlesearch/shows?q=${searchTerm}`);
+    const img = document.createElement('img');
+    img.src = res.data.image.medium;
+    document.body.append(img);
+});
+
+
+
+
