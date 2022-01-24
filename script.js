@@ -9,10 +9,13 @@ form.addEventListener('submit', async function (e) {
   const res = await axios.get(`https://api.tvmaze.com/singlesearch/shows?q=${searchTerm}`);
     const img = document.createElement('img');
     const showName = document.createElement('p');
+    const showCard = document.createElement('div');
+     showCard.className = "showCard";
     img.src = res.data.image.medium;
     showName.innerText = res.data.name;
-    showContainer.append(img);
-    showContainer.append(showName);
+    showCard.append(img);
+    showCard.append(showName);
+    showContainer.append(showCard);
     
     console.log(res.data)
 });
